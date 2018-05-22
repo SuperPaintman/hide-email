@@ -1,0 +1,59 @@
+{
+  "name": "hide-email",
+  "version": "0.1.0",
+  "description": "Email addresses characters convertor to HTML entities to protect against spam bots and crawlers",
+  "main": "lib/hide-email.js",
+  "types": "lib/hide-email.d.ts",
+  "scripts": {
+    "start": "tsc -w",
+    "build": "tsc",
+    "test": "mocha ./lib/*.spec.js",
+    "test-ci": "istanbul cover ./node_modules/mocha/bin/_mocha -- ./lib/*.spec.js",
+    "lint": "tslint -p .",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "prepublish": "in-publish && (npm run lint && npm run build && npm run test) || not-in-publish",
+    "prepush": "npm run prepublish",
+    "precommit": "npm run lint"
+  },
+  "author": {
+    "name": "Aleksandr Krivoshchekov",
+    "email": "SuperPaintmanDeveloper@gmail.com",
+    "url": "https://superpaintman.com/"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib/",
+    "!lib/*.spec.{js,js.map,d.ts}",
+    "!src/"
+  ],
+  "keywords": [
+    "hide-email",
+    "antispambot"
+  ],
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "6.2.0",
+    "@commitlint/travis-cli": "6.2.0",
+    "@types/chai": "4.1.3",
+    "@types/html-entities": "1.2.16",
+    "@types/mocha": "5.2.0",
+    "chai": "4.1.2",
+    "codeclimate-test-reporter": "0.5.0",
+    "commitlint-config-pedantic": "0.0.2",
+    "coveralls": "3.0.1",
+    "html-entities": "1.2.1",
+    "husky": "0.14.3",
+    "in-publish": "2.0.0",
+    "istanbul": "0.4.5",
+    "mocha": "5.2.0",
+    "tslint": "5.10.0",
+    "tslint-config-pedantic": "0.0.2",
+    "typescript": "2.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuperPaintman/hide-email.git"
+  }
+}

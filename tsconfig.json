@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "alwaysStrict": true,
+    "strict": true,
+    "newLine": "LF",
+    "target": "es3",
+    "module": "umd",
+  }
+}

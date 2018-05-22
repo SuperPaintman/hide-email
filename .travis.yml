@@ -1,0 +1,42 @@
+language: node_js
+node_js:
+    - "6"
+    - "8"
+    - "10"
+
+cache:
+    yarn: true
+
+env:
+    global:
+        - "NODE_ENV=test"
+
+before_install:
+    - export PATH="$(npm bin):$PATH"
+
+script:
+    # Build
+    - npm run build
+
+    # Lint commits
+    - commitlint-travis
+
+    # Lint
+    - npm run lint
+
+    # Build
+    - npm run build
+
+    # Test
+    - npm run test-ci
+
+after_script:
+    # coveralls
+    - cat ./coverage/lcov.info | coveralls
+
+    # codeclimate
+    - cat ./coverage/lcov.info | codeclimate-test-reporter
+
+branches:
+    except:
+        - gh-pages
