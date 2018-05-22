@@ -1,6 +1,6 @@
 {
   "name": "protect-email",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Email addresses characters convertor to HTML entities to protect against spam bots and crawlers",
   "main": "lib/protect-email.js",
   "types": "lib/protect-email.d.ts",

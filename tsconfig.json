@@ -9,6 +9,6 @@
     "strict": true,
     "newLine": "LF",
     "target": "es3",
-    "module": "umd",
+    "module": "commonjs"
   }
 }
