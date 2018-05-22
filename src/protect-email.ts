@@ -8,9 +8,9 @@ export type Randomizer = () => number;
 const defaultRandomizer: Randomizer = () => Math.random();
 
 
-export function hideEmailFactory(randomizer: Randomizer) {
+export function protectEmailFactory(randomizer: Randomizer) {
   // tslint:disable-next-line:no-shadowed-variable
-  return function hideEmail(email: string, hexEncoding = false): string {
+  return function protectEmail(email: string, hexEncoding = false): string {
     const res = new Array(email.length);
     const randomFactor = hexEncoding ? 3 : 2;
 
@@ -41,7 +41,7 @@ export function hideEmailFactory(randomizer: Randomizer) {
 }
 
 // Yes, we could use a factory above, but it makes too much overhead.
-export function hideEmailAlways(email: string): string {
+export function protectEmailAlways(email: string): string {
   const res = new Array(email.length);
 
   for (let i = 0, ii = email.length; i < ii; i++) {
@@ -51,4 +51,4 @@ export function hideEmailAlways(email: string): string {
   return res.join('');
 }
 
-export const hideEmail = hideEmailFactory(defaultRandomizer);
+export const protectEmail = protectEmailFactory(defaultRandomizer);

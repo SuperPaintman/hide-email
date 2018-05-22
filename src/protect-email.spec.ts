@@ -7,10 +7,10 @@ import { AllHtmlEntities } from 'html-entities';
 
 import {
   Randomizer,
-  hideEmail,
-  hideEmailAlways,
-  hideEmailFactory
-} from './hideemail';
+  protectEmail,
+  protectEmailAlways,
+  protectEmailFactory
+} from './protect-email';
 
 
 /* Constants */
@@ -30,125 +30,125 @@ const fakeRandomizer: Randomizer = (() => {
 
 
 /* Tests */
-describe('hideEmail', function () {
+describe('protectEmail', function () {
   const email = 'test@gmail.com';
 
   it('should work', () => {
-    hideEmail(email);
+    protectEmail(email);
   });
 
   it('should return a string', () => {
-    const res = hideEmail(email);
+    const res = protectEmail(email);
 
     expect(res).to.be.a('string');
   });
 
   it('should contain at least a encoded "@"', () => {
-    const res = hideEmail(email);
+    const res = protectEmail(email);
 
     expect(res).to.contain(AT_CODE);
   });
 
   it('should return a valid HTML text', () => {
-    const res = hideEmail(email);
+    const res = protectEmail(email);
 
     expect(res.length).to.be.gte(email.length);
     expect(decode(res)).to.be.equal(email);
   });
 });
 
-describe('hideEmailAlways', function () {
+describe('protectEmailAlways', function () {
   const email = 'test@gmail.com';
 
   it('should work', () => {
-    hideEmailAlways(email);
+    protectEmailAlways(email);
   });
 
   it('should return a string', () => {
-    const res = hideEmailAlways(email);
+    const res = protectEmailAlways(email);
 
     // tslint:disable-next-line:max-line-length
     expect(res).to.be.equal('&#116;&#101;&#115;&#116;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;');
   });
 
   it('should contain at least a encoded "@"', () => {
-    const res = hideEmailAlways(email);
+    const res = protectEmailAlways(email);
 
     expect(res).to.contain(AT_CODE);
   });
 
   it('should return a valid encoded string', () => {
-    const res = hideEmailAlways(email);
+    const res = protectEmailAlways(email);
 
     console.log(res);
   });
 
   it('should return a valid HTML text', () => {
-    const res = hideEmailAlways(email);
+    const res = protectEmailAlways(email);
 
     expect(res.length).to.be.gte(email.length);
     expect(decode(res)).to.be.equal(email);
   });
 });
 
-describe('hideEmailFactory', function () {
+describe('protectEmailFactory', function () {
   const email = 'test@gmail.com';
 
-  const hideEmailEncode = hideEmailFactory(encodeRandomizer);
-  const hideEmailOriginal = hideEmailFactory(originalRandomizer);
-  const hideEmailHex = hideEmailFactory(hexRandomizer);
-  const hideEmailFake = hideEmailFactory(fakeRandomizer);
+  const protectEmailEncode = protectEmailFactory(encodeRandomizer);
+  const protectEmailOriginal = protectEmailFactory(originalRandomizer);
+  const protectEmailHex = protectEmailFactory(hexRandomizer);
+  const protectEmailFake = protectEmailFactory(fakeRandomizer);
 
   it('should work', () => {
-    hideEmailFactory(() => 0);
+    protectEmailFactory(() => 0);
   });
 
   it('should return a function', () => {
-    const res = hideEmailFactory(() => 0);
+    const res = protectEmailFactory(() => 0);
 
     expect(res).to.be.a('function');
   });
 
-  it('should return a function which is similar to the "hideEmail"', () => {
-    const newHideEmail = hideEmailFactory(() => Math.random());
+  it('should return a function which is similar to the "protectEmail"', () => {
+    const newProtectEmail = protectEmailFactory(() => Math.random());
 
-    const res = newHideEmail(email);
+    const res = newProtectEmail(email);
 
     expect(res).to.be.a('string');
     expect(res).to.contain(AT_CODE);
     expect(res.length).to.be.gte(email.length);
     expect(decode(res)).to.be.equal(email);
-    expect(newHideEmail.toString()).to.be.equal(hideEmail.toString());
+    expect(newProtectEmail.toString()).to.be.equal(protectEmail.toString());
   });
 
-  describe('hideEmailEncode', () => {
+  describe('protectEmailEncode', () => {
     it('should return encoded string', () => {
-      const res = hideEmailEncode(email);
+      const res = protectEmailEncode(email);
 
       // tslint:disable-next-line:max-line-length
       expect(res).to.be.equal('&#116;&#101;&#115;&#116;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;');
     });
   });
 
-  describe('hideEmailOriginal', () => {
+  describe('protectEmailOriginal', () => {
     it('should return encoded string', () => {
-      const res = hideEmailOriginal(email);
+      const res = protectEmailOriginal(email);
 
       expect(res).to.be.equal('test&#64;gmail.com');
     });
   });
 
-  describe('hideEmailHex', () => {
+  describe('protectEmailHex', () => {
     it('should return encoded string', () => {
-      const res = hideEmailHex(email, true);
+      const res = protectEmailHex(email, true);
 
       expect(res).to.be.equal('%74%65%73%74%40%67%6d%61%69%6c%2e%63%6f%6d');
     });
   });
 
-  describe('hideEmailFake', () => {
+  describe('protectEmailFake', () => {
     it('should return encoded string', () => {
-      const res = hideEmailFake(email);
+      const res = protectEmailFake(email);
 
       // tslint:disable-next-line:max-line-length
       expect(res).to.be.equal('&#116;&#101;s&#116;&#64;g&#109;&#97;i&#108;&#46;c&#111;&#109;');
@@ -156,7 +156,7 @@ describe('hideEmailFactory', function () {
     });
 
     it('should support "hexEncoding" parameter', () => {
-      const res = hideEmailFake(email, true);
+      const res = protectEmailFake(email, true);
 
       expect(res).to.be.equal('%74&#101;s%74&#64;g%6d&#97;i%6c&#46;c%6f&#109;');
       expect(decode(res)).to.be.equal('%74es%74@g%6dai%6c.c%6fm');
