@@ -10,7 +10,7 @@ import {
   hideEmail,
   hideEmailAlways,
   hideEmailFactory
-} from './hide-email';
+} from './hideemail';
 
 
 /* Constants */

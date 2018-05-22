@@ -1,9 +1,9 @@
 {
-  "name": "hide-email",
+  "name": "hideemail",
   "version": "0.1.0",
   "description": "Email addresses characters convertor to HTML entities to protect against spam bots and crawlers",
-  "main": "lib/hide-email.js",
-  "types": "lib/hide-email.d.ts",
+  "main": "lib/hideemail.js",
+  "types": "lib/hideemail.d.ts",
   "scripts": {
     "start": "tsc -w",
     "build": "tsc",
@@ -28,7 +28,7 @@
     "!src/"
   ],
   "keywords": [
-    "hide-email",
+    "hideemail",
     "antispambot"
   ],
   "license": "MIT",
@@ -54,6 +54,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SuperPaintman/hide-email.git"
+    "url": "git+https://github.com/SuperPaintman/hideemail.git"
   }
 }

@@ -1,4 +1,4 @@
-# hide-email
+# hideemail
 
 [![Linux Build][travis-image]][travis-url]
 [![Test Coverage][coveralls-image]][coveralls-url]
@@ -19,9 +19,9 @@ A JavaScript port of [Wordpress `antispambot`][wordpress-antispambot-url].
 ## Installation
 
 ```sh
-$ npm install --save hide-email
+$ npm install --save hideemail
 # Or with yarn
-$ yarn add hide-email
+$ yarn add hideemail
 ```
 
 
@@ -32,7 +32,7 @@ $ yarn add hide-email
 
 ```ts
 'use strict';
-import { hideEmail, hideEmailAlways, hideEmailFactory } from 'hide-email';
+import { hideEmail, hideEmailAlways, hideEmailFactory } from 'hideemail';
 
 const email = 'test.email@gmail.com';
 
@@ -96,7 +96,7 @@ $ npm run test
 
 ## Contributing
 
-1. Fork it (<https://github.com/SuperPaintman/hide-email/fork>)
+1. Fork it (<https://github.com/SuperPaintman/hideemail/fork>)
 2. Create your feature branch (`git checkout -b feature/<feature_name>`)
 3. Commit your changes (`git commit -am '<type>(<scope>): added some feature'`)
 4. Push to the branch (`git push origin feature/<feature_name>`)
@@ -123,15 +123,15 @@ $ npm run test
 [MIT][license-url]
 
 
-[license-url]: https://raw.githubusercontent.com/SuperPaintman/hide-email/master/LICENSE
-[changelog-url]: https://raw.githubusercontent.com/SuperPaintman/hide-email/master/CHANGELOG.md
-[npm-url]: https://www.npmjs.com/package/hide-email
-[npm-v-image]: https://img.shields.io/npm/v/hide-email.svg
-[npm-dm-image]: https://img.shields.io/npm/dm/hide-email.svg
-[travis-image]: https://img.shields.io/travis/SuperPaintman/hide-email/master.svg?label=linux
-[travis-url]: https://travis-ci.org/SuperPaintman/hide-email
-[coveralls-image]: https://img.shields.io/coveralls/SuperPaintman/hide-email/master.svg
-[coveralls-url]: https://coveralls.io/r/SuperPaintman/hide-email?branch=master
+[license-url]: https://raw.githubusercontent.com/SuperPaintman/hideemail/master/LICENSE
+[changelog-url]: https://raw.githubusercontent.com/SuperPaintman/hideemail/master/CHANGELOG.md
+[npm-url]: https://www.npmjs.com/package/hideemail
+[npm-v-image]: https://img.shields.io/npm/v/hideemail.svg
+[npm-dm-image]: https://img.shields.io/npm/dm/hideemail.svg
+[travis-image]: https://img.shields.io/travis/SuperPaintman/hideemail/master.svg?label=linux
+[travis-url]: https://travis-ci.org/SuperPaintman/hideemail
+[coveralls-image]: https://img.shields.io/coveralls/SuperPaintman/hideemail/master.svg
+[coveralls-url]: https://coveralls.io/r/SuperPaintman/hideemail?branch=master
 [commitizen-image]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
 [commitizen-url]: https://commitizen.github.io/cz-cli/
 [wordpress-antispambot-url]: https://core.trac.wordpress.org/browser/tags/4.9.6/src/wp-includes/formatting.php#L2500
